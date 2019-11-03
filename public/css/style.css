@@ -1,0 +1,11 @@
+.sep{
+    display: block;
+    width: 100%;
+    height: 15px;
+}
+
+.custom-radio input:checked + label{
+    color: #fff;
+    background-color: #5cb85c;
+    border-color: #4cae4c;
+}
