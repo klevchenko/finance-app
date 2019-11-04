@@ -12,10 +12,22 @@ class TransactionController extends Controller
     {
         $transactions = Transaction::all();
 
-        $all_types = [];
+        $transaction_types = [];
+
+        foreach($transactions as $one)
+        {
+            if(!in_array($one->type, $transaction_types))
+            {
+                $transaction_types[] = $one->type;
+            }
+        }
+
+        print_r($transaction_types);
+
 
         return [
             'transactions' => $transactions,
+            'transaction_types' => $transaction_types,
         ];
     }
 
