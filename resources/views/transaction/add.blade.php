@@ -8,26 +8,38 @@
     <input type="hidden" value="0" name="category">
     <input type="hidden" value="0" name="comment">
 
+    <input type="hidden" value="0" name="amount_remove">
+    <input type="hidden" value="0" name="amount_to_funds">
+
     <div class="input-group">
         <input type="number" name="amount" class="form-control">
         <div class="input-group-btn custom-radio">
-            <input class="hidden" id="UAH" type="radio" name="currency" checked="checked" value="UAH" />
-            <label for="UAH" type="button" class="btn btn-default">грн</label>
-            <input class="hidden" id="USD" type="radio" name="currency" value="USD" />
-            <label for="USD" type="button" class="btn btn-default">дол</label>
+            @foreach ($all_currencys as $currency)
+                <input 
+                    class="hidden" 
+                    id="{{ $currency['code'] }}" 
+                    type="radio" 
+                    name="currency" 
+                    <?=$currency['code'] == 'UAH' ? ' checked="checked" ' : ''?>
+                    value="{{ $currency['id'] }}" />
+                <label 
+                    for="{{ $currency['code'] }}" 
+                    type="button" 
+                    class="btn btn-default">{{ $currency['name'] }}</label>
+            @endforeach
         </div>
     </div>
     <span class="sep"></span>
 
     <div class="btn-group btn-group-justified" role="group">
         <div class="btn-group" role="group">
-            <button name="add" type="submit" class="btn btn-primary">Додати</button>
+            <button type="submit" class="btn btn-primary">Додати</button>
         </div>
         <div class="btn-group" role="group">
-            <button name="remove" type="submit" class="btn btn-danger">Відняти</button>
+            <button name="amount_remove" value="1" type="submit" class="btn btn-danger">Відняти</button>
         </div>
         <div class="btn-group" role="group">
-            <button mane="put" type="submit" class="btn btn-success">Відкласти</button>
+            <button name="amount_to_funds" value="1" type="submit" class="btn btn-success">Відкласти</button>
         </div>
     </div>
 

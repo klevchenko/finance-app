@@ -20,9 +20,6 @@ class CreateCurrencysTable extends Migration
             $table->string('code', 300);
             $table->string('name', 300);
 
-            $table->float('sale', 8, 2);
-            $table->float('buy', 8, 2);
-
             $table->timestamps();
         });
     }
